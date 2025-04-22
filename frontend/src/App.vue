@@ -1,10 +1,13 @@
-<!-- src/App.vue -->
 <template>
+  <Navbar />
   <main class="container">
-    <h1>🔗 URL Shortener</h1>
     <router-view />
   </main>
 </template>
+
+<script setup lang="ts">
+import Navbar from './components/Navbar.vue'
+</script>
 
 <style scoped>
 .container {
