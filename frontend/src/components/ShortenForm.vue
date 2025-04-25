@@ -1,4 +1,6 @@
 <template>
+  <main>
+    <h1>📱 URL 단축</h1>
     <form @submit.prevent="shorten">
       <input v-model="originalUrl" type="url" placeholder="원본 URL 입력" required />
       <button type="submit">단축하기</button>
@@ -6,6 +8,7 @@
         ✅ 단축 URL: <a :href="shortUrl" target="_blank">{{ shortUrl }}</a>
       </p>
     </form>
+  </main>
   </template>
   
   <script setup>
@@ -28,6 +31,11 @@
   </script>
   
   <style scoped>
+    main {
+    padding: 2rem;
+    text-align: center;
+  }
+
   form {
     display: flex;
     flex-direction: column;

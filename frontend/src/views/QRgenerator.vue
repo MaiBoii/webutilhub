@@ -4,11 +4,15 @@
   
       <div class="form">
         <input v-model="text" placeholder="QR로 만들 텍스트나 URL 입력" />
-        <button @click="generate">생성</button>
       </div>
   
-      <div class="qr-preview" v-if="text">
-        <qrcode-vue :value="text" :size="200" />
+      <div class="dashboard" ref="dashboardRef" v-if="text">
+        <qrcode-vue :value="text" :size="150" />
+        <p class="gray-text">{{ text }}</p>
+      </div>
+  
+      <div v-if="text" style="margin-top: 1rem">
+        <button @click="downloadDashboard">이미지 다운로드</button>
       </div>
     </main>
   </template>
@@ -16,12 +20,24 @@
   <script setup lang="ts">
   import { ref } from 'vue'
   import QrcodeVue from 'qrcode.vue'
+  import html2canvas from 'html2canvas'
   
   const text = ref('')
+  const dashboardRef = ref<HTMLElement | null>(null)
   
   const generate = () => {
     if (!text.value.trim()) {
       alert('텍스트를 입력해주세요!')
+    }
+  }
+  
+  const downloadDashboard = async () => {
+    if (dashboardRef.value) {
+      const canvas = await html2canvas(dashboardRef.value)
+      const link = document.createElement('a')
+      link.download = 'dashboard.png'
+      link.href = canvas.toDataURL('image/png')
+      link.click()
     }
   }
   </script>
@@ -55,8 +71,27 @@
     cursor: pointer;
   }
   
-  .qr-preview {
-    margin-top: 1rem;
+  .dashboard {
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+    padding: 1rem;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .gray-text {
+    color: #666;
+    font-style: italic;
+    margin-top: 0.5rem;
+    text-align: center;
+    word-wrap: break-word;
   }
   </style>
   
