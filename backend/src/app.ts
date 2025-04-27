@@ -3,7 +3,7 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 import urlRoutes from './routers/urlRoutes'
 import logger from './middlewares/logger'
-import ipExtractor from './middlewares/ipExtractor'
+//import ipExtractor from './middlewares/ipExtractor'
 
 dotenv.config()
 
