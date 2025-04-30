@@ -1,15 +1,17 @@
 <template>
     <nav class="navbar">
       <div class="navbar-left">
-        <img src="/logo.svg" alt="로고" class="logo" />
-        <span class="site-name">공구함</span>
+        <!-- <img src="/logo.svg" alt="로고" class="logo" />
+        <span class="site-name">공구함</span> -->
       </div>
       <div class="navbar-links">
         <RouterLink to="/" class="nav-link"> URL 단축</RouterLink>
         <RouterLink to="/qr" class="nav-link"> QR 생성기</RouterLink>
         <RouterLink to="/base64" class="nav-link"> Base64</RouterLink>
         <RouterLink to="/webhook" class="nav-link"> WebHook</RouterLink>
+        <RouterLink to="/images" class="nav-link"> 이미지 편집</RouterLink>
         <RouterLink to="/stats" class="nav-link"> 통계</RouterLink>
+        
       </div>
     </nav>
   </template>
@@ -68,6 +70,8 @@
   display: flex;
   align-items: center;
   gap: 1.5rem;
+  justify-content: center; /* 항목들을 중앙 정렬 */
+  flex-grow: 1; /* 남는 공간을 모두 차지하여 가운데 정렬되도록 */
 }
 
 .nav-link {
