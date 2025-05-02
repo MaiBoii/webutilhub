@@ -9,11 +9,12 @@
         <i class="fa-solid fa-lock"></i>
         Encoding
       </button>
-
     </div>
 
     <textarea v-model="input" placeholder="여기에 텍스트 입력" rows="6" />
-        <button @click="processInput" class="custom-btn btn-10">{{ mode === 'encode' ? '> Encode <' : '> Decode <' }}</button>
+    <a  @click="processInput"  class="btn-1" href="#">{{ mode === 'encode' ? '> Encode <' : '> Decode <' }}</a>
+
+      <!-- <button @click="processInput" class="custom-btn btn-10">{{ mode === 'encode' ? '> Encode <' : '> Decode <' }}</button> -->
 
     <div class="output">
       <textarea readonly :value="output" placeholder="여기에 결과물 출력" rows="6" />
@@ -99,6 +100,40 @@ button {
   cursor: pointer; */
   margin: 10px;
 }
+.btn-1 {
+  color: #66ccff; /* 밝은 색 예시 */
+  position: relative;
+  display: block;
+  overflow: hidden;
+  max-width: 150px;
+  height: 40px;
+  margin: 1rem auto;
+  text-transform: uppercase;
+  border: 1px solid currentColor;
+}
+
+.btn-1:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -50px;
+  bottom: 0;
+  left: 0;
+  border-right: 50px solid transparent;
+  border-bottom: 80px solid #3399cc; /* 어두운 색 예시 */
+  transform: translateX(-100%);
+  z-index: -1;
+  transition: 0.5s ease-in-out;
+}
+
+.btn-1:hover {
+  color: #99ddff; /* hover 시 더 밝은 색 */
+}
+
+.btn-1:hover:before {
+  transform: translateX(0);
+}
+
 
 
 .frame {
@@ -127,37 +162,9 @@ button {
   margin-top: 2rem;
 }
 
-
-/* 10 */
-.btn-10 {
-  background: rgb(22,9,240);
-  color: #fff;
-  border: none;
-  transition: all 0.3s ease;
-  overflow: hidden;
+a {
+  text-decoration: none;
+  line-height: 40px;
 }
-.btn-10:after {
-  position: absolute;
-  content: " ";
-  top: 0;
-  left: 0;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-  transition: all 0.3s ease;
-  -webkit-transform: scale(.1);
-  transform: scale(.1);
-}
-.btn-10:hover {
-  color: #fff;
-  border: none;
-  background: transparent;
-}
-.btn-10:hover:after {
-  background: rgb(0,3,255);
-  -webkit-transform: scale(1);
-  transform: scale(1);
-}
-
 
 </style>

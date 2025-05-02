@@ -60,8 +60,8 @@
 
 .site-name {
   font-weight: bold;
-  font-size: 28px; /* 조금 작게 해서 로고와 높이 맞춤 */
-  line-height: 30px; /* 로고 높이에 맞춤 */
+  font-size: 28px; 
+  line-height: 30px;
   color: black;
   font-family: 'JalnanGothic';
 }
@@ -70,8 +70,8 @@
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  justify-content: center; /* 항목들을 중앙 정렬 */
-  flex-grow: 1; /* 남는 공간을 모두 차지하여 가운데 정렬되도록 */
+  justify-content: center; 
+  flex-grow: 1;
 }
 
 .nav-link {
