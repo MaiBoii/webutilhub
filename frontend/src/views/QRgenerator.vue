@@ -1,7 +1,6 @@
 <template>
   <main>
-    <!-- <h1>📱 QR 코드 생성기 📱</h1> -->
-
+    <div class="flex-container">
     <div class="form">
       <div class="type-selector">
         <div
@@ -17,20 +16,6 @@
 
 
   <form>
-<!--     
-    <div class="group">      
-      <input type="text" required>
-      <span class="highlight"></span>
-      <span class="bar"></span>
-      <label>Name</label>
-    </div>
-      
-    <div class="group">      
-      <input type="text" required>
-      <span class="highlight"></span>
-      <span class="bar"></span>
-      <label>Email</label>
-    </div> -->
     
   </form>
 
@@ -58,13 +43,15 @@
       </div>
     </div>
 
-    <!-- QR 코드 출력 -->
-    <div class="qrcode-container" ref="dashboardRef">
-      <qrcode-vue :value="finalText || ''" :size="200" />
-    </div>
-
-    <div style="margin-top: 1rem">
-      <button @click="downloadDashboard">이미지 다운로드</button>
+      <!-- 오른쪽 QR 코드 + 버튼 -->
+      <div class="qrcode-section">
+        <div class="qrcode-container" ref="dashboardRef">
+          <qrcode-vue :value="finalText || ''" :size="200" />
+        </div>
+        <div class="download-button-wrapper">
+          <button @click="downloadDashboard">이미지 다운로드</button>
+        </div>
+      </div>
     </div>
   </main>
 </template>
@@ -164,12 +151,24 @@ input:focus ~ label, input:valid ~ label 		{
 
 
 main {
+  width: 100%;
   padding: 2rem;
   text-align: center;
 }
 
+.flex-container {
+  display: flex;
+  gap: 2rem; /* 요소 간 간격 조절 */
+  align-items: flex-start; /* 상단 정렬 */
+  max-width: 1000px;   /* 너비 제한 */
+  width: 100%;
+  margin: 0 auto;      /* 가운데 정렬 */
+  padding: 1rem;       /* 양 옆 여백 */
+}
+
 .form {
   display: flex;
+  flex: 1;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
@@ -235,6 +234,17 @@ button {
   cursor: pointer;
 }
 
+.qrcode-section {
+  display: flex;
+  flex-direction: column; /* 수직 정렬 */
+  align-items: center;
+  gap: 1rem;
+}
+
+.download-button-wrapper {
+  text-align: center;
+}
+
 .qrcode-container {
   width: 250px;
   height: 250px;
@@ -249,6 +259,7 @@ button {
   align-items: center;
   justify-content: center;
   position: relative;
+  flex-shrink: 0; /* 줄어들지 않도록 */
 }
 
 .logo {
