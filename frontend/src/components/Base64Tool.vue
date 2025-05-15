@@ -1,14 +1,14 @@
 <template>
   <main>
     <div class="mode-switch">
-      <button @click="setMode('decode')" :class="{ active: mode === 'decode' }">
+      <a @click="setMode('decode')" :class="['btn-1', { active: mode === 'decode' }]">
         <i class="fa-solid fa-unlock"></i>
         Decoding
-      </button>
-      <button @click="setMode('encode')" :class="{ active: mode === 'encode' }">
+      </a>
+      <a @click="setMode('encode')" :class="['btn-1', { active: mode === 'encode' }]">
         <i class="fa-solid fa-lock"></i>
         Encoding
-      </button>
+      </a>
     </div>
 
     <textarea v-model="input" placeholder="여기에 텍스트 입력" rows="6" />
@@ -88,6 +88,18 @@ textarea {
   justify-content: center;
   gap: 1rem;
   margin: 1rem 0;
+}
+
+textarea {
+  width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
 }
 
 button {

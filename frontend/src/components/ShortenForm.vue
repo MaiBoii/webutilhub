@@ -1,6 +1,5 @@
 <template>
   <main>
-    <!-- <h1>🔗 URL 단축 🔗</h1> -->
     <form @submit.prevent="shorten">
       <input v-model="originalUrl" type="url" placeholder="원본 URL 입력" required />
       <button type="submit">단축하기</button>
@@ -50,5 +49,18 @@
     font-size: 1rem;
     cursor: pointer;
   }
+
+  input {
+  width: 100%;
+  height: 50px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+}
+
   </style>
   
