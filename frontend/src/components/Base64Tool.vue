@@ -58,33 +58,45 @@ main {
 
 .radio-btn {
   position: relative;
-  display: block;
-  max-width: 150px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: 200px;
   height: 40px;
-  margin: 1rem auto;
+  margin: 1rem;
   padding: 0 1rem;
   text-transform: uppercase;
   border: 1px solid #66ccff;
   color: #66ccff;
   cursor: pointer;
   line-height: 40px;
-  text-align: center;
   user-select: none;
   transition: background-color 0.3s ease;
+  border-radius: 6px;
 }
 
 .radio-btn input[type="radio"] {
   display: none;
 }
 
-.radio-btn.active {
+.radio-btn .checkmark {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #66ccff;
+  display: inline-block;
+  position: relative;
+}
+
+.radio-btn.active .checkmark {
   background-color: #4f46e5;
-  color: white;
   border-color: #4f46e5;
 }
 
-.radio-btn i {
-  margin-right: 0.5rem;
+.radio-btn.active {
+  background-color: #e0e7ff;
+  color: #4f46e5;
+  border-color: #4f46e5;
 }
 
 textarea {
@@ -99,18 +111,12 @@ textarea {
 .mode-switch {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 0.25 rem;
   margin-bottom: 1rem;
 }
 
 .mode-switch label {
   cursor: pointer;
-}
-
-.mode-switch .btn-1.active {
-  background-color: #4f46e5;
-  color: white;
-  border-color: #4f46e5;
 }
 
 .mode-switch button {
@@ -120,11 +126,6 @@ textarea {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-}
-
-.mode-switch button.active {
-  background-color: #4f46e5;
-  color: white;
 }
 
 .button-group {
@@ -183,8 +184,6 @@ button {
 .btn-1:hover:before {
   transform: translateX(0);
 }
-
-
 
 .frame {
   width: 90%;

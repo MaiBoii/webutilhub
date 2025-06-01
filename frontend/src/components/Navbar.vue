@@ -58,6 +58,10 @@
   width: 32px;
 }
 
+.nav-link.router-link-active {
+  color: #4f46e5;
+}
+
 .site-name {
   font-weight: bold;
   font-size: 28px; 
