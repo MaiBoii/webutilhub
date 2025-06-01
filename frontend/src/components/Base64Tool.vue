@@ -1,20 +1,23 @@
 <template>
   <main>
+    <h1>Base64 암호화/복호화</h1>
+    <p>Base64 관련 작업을 할 수 있습니다.</p>
+
     <div class="mode-switch">
-      <a @click="setMode('decode')" :class="['btn-1', { active: mode === 'decode' }]">
+      <label :class="['radio-btn', { active: mode === 'decode' }]">
+        <input type="radio" value="decode" v-model="mode" hidden />
         <i class="fa-solid fa-unlock"></i>
         Decoding
-      </a>
-      <a @click="setMode('encode')" :class="['btn-1', { active: mode === 'encode' }]">
+      </label>
+      <label :class="['radio-btn', { active: mode === 'encode' }]">
+        <input type="radio" value="encode" v-model="mode" hidden />
         <i class="fa-solid fa-lock"></i>
         Encoding
-      </a>
+      </label>
     </div>
 
     <textarea v-model="input" placeholder="여기에 텍스트 입력" rows="6" />
-    <a  @click="processInput"  class="btn-1" href="#">{{ mode === 'encode' ? '> Encode <' : '> Decode <' }}</a>
-
-      <!-- <button @click="processInput" class="custom-btn btn-10">{{ mode === 'encode' ? '> Encode <' : '> Decode <' }}</button> -->
+    <a @click="processInput" class="btn-1" href="#">{{ mode === 'encode' ? '> Encode <' : '> Decode <' }}</a>
 
     <div class="output">
       <textarea readonly :value="output" placeholder="여기에 결과물 출력" rows="6" />
@@ -53,6 +56,37 @@ main {
   text-align: center;
 }
 
+.radio-btn {
+  position: relative;
+  display: block;
+  max-width: 150px;
+  height: 40px;
+  margin: 1rem auto;
+  padding: 0 1rem;
+  text-transform: uppercase;
+  border: 1px solid #66ccff;
+  color: #66ccff;
+  cursor: pointer;
+  line-height: 40px;
+  text-align: center;
+  user-select: none;
+  transition: background-color 0.3s ease;
+}
+
+.radio-btn input[type="radio"] {
+  display: none;
+}
+
+.radio-btn.active {
+  background-color: #4f46e5;
+  color: white;
+  border-color: #4f46e5;
+}
+
+.radio-btn i {
+  margin-right: 0.5rem;
+}
+
 textarea {
   width: 80%;
   max-width: 600px;
@@ -67,6 +101,16 @@ textarea {
   justify-content: center;
   gap: 1rem;
   margin-bottom: 1rem;
+}
+
+.mode-switch label {
+  cursor: pointer;
+}
+
+.mode-switch .btn-1.active {
+  background-color: #4f46e5;
+  color: white;
+  border-color: #4f46e5;
 }
 
 .mode-switch button {
@@ -103,15 +147,9 @@ textarea {
 }
 
 button {
-  /* padding: 0.5rem 1rem;
-  font-weight: bold;
-  background-color: #4f46e5;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer; */
   margin: 10px;
 }
+
 .btn-1 {
   color: #66ccff; /* 밝은 색 예시 */
   position: relative;

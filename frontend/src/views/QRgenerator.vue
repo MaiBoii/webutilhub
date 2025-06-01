@@ -1,5 +1,7 @@
 <template>
   <main>
+    <h1>QR 코드 생성기</h1>
+    <p>목적에 맞는 QR 코드를 쉽게 생성해보세요.</p>
     <div class="flex-container">
     <div class="form">
       <div class="type-selector">

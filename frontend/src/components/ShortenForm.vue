@@ -1,5 +1,7 @@
 <template>
   <main>
+    <h1>URL 단축</h1>
+    <p>긴 URL 주소를 클릭 한 번으로 단축해보세요.</p>
     <form @submit.prevent="shorten">
       <input v-model="originalUrl" type="url" placeholder="원본 URL 입력" required />
       <button type="submit">단축하기</button>
