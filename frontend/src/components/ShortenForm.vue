@@ -37,11 +37,6 @@
   </script>
   
   <style scoped>
-    main {
-    padding: 2rem;
-    text-align: center;
-  }
-
   form {
     display: flex;
     flex-direction: column;
@@ -71,7 +66,9 @@ input {
 
 .form-row {
   display: flex;
-  width: 100%;
+  width: 800px;
+  align-self: center;
+  margin-top: 1rem;
 }
 
 .form-row input {

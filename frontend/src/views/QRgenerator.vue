@@ -42,6 +42,12 @@
           <input v-model="emailSubject" placeholder="제목 입력" />
           <input v-model="emailBody" placeholder="내용 입력" />
         </template>
+
+        <template v-else-if="type === 'x-twitter'">
+          <input v-model="email" placeholder="이메일 주소 입력" />
+          <input v-model="emailSubject" placeholder="제목 입력" />
+          <input v-model="emailBody" placeholder="내용 입력" />
+        </template>
       </div>
     </div>
 
@@ -70,6 +76,8 @@ const options = [
   { value: 'wifi', label: 'Wi-Fi', icon: 'fas fa-wifi' },
   { value: 'sms', label: 'SMS', icon: 'fas fa-sms' },
   { value: 'email', label: '이메일', icon: 'fas fa-envelope' },
+  { value: 'x', label: 'Twitter', icon: 'fa-brands fa-x-twitter' },
+
 ]
 
 // 상태 관리
@@ -116,11 +124,8 @@ const downloadDashboard = async () => {
 }
 </script>
 
-
-
 <style scoped>
 
-/* LABEL ======================================= */
 label 				 {
   color:#999; 
   font-size:18px;
@@ -142,6 +147,7 @@ input 				{
   border:none;
   border-bottom:1px solid #757575;
 }
+
 input:focus 		{ outline:none; }
 
 /* active state */
@@ -151,12 +157,6 @@ input:focus ~ label, input:valid ~ label 		{
   color:#5264AE;
 }
 
-
-main {
-  width: 100%;
-  padding: 2rem;
-  text-align: center;
-}
 
 .flex-container {
   display: flex;

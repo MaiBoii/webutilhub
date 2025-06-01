@@ -1,7 +1,7 @@
 <template>
   <main>
     <h1>Base64 암호화/복호화</h1>
-    <p>Base64 관련 작업을 할 수 있습니다.</p>
+    <p>Base64 관련 작업을 할 수 있어요.</p>
 
     <div class="mode-switch">
       <label :class="['radio-btn', { active: mode === 'decode' }]">
@@ -51,10 +51,6 @@ const processInput = () => {
 </script>
 
 <style scoped>
-main {
-  padding: 2rem;
-  text-align: center;
-}
 
 .radio-btn {
   position: relative;
