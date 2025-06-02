@@ -1,6 +1,6 @@
 <template>
     <nav class="navbar">
-      <div class="navbar-left">
+      <div class="navbar-logo">
         <!-- <img src="/logo.svg" alt="로고" class="logo" />
         <span class="site-name">공구함</span> -->
       </div>
@@ -13,6 +13,15 @@
         <RouterLink to="/stats" class="nav-link"> 통계</RouterLink>
         
       </div>
+
+      <div class="navbar-icons">
+        <a href="https://github.com/MaiBoii" target="_blank" class="icon-link" aria-label="GitHub">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <a href="https://velog.io/@msu2020" target="_blank" class="icon-link" aria-label="Blog">
+          <i class="fa-solid fa-blog"></i>
+        </a>
+    </div>
     </nav>
   </template>
   
@@ -22,12 +31,12 @@
   
   <style scoped>
 
-@font-face {
-    font-family: 'JalnanGothic';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/JalnanGothic.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
+    @font-face {
+        font-family: 'JalnanGothic';
+        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/JalnanGothic.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
 
     @font-face {
     font-family: 'S-CoreDream-3Light';
@@ -45,9 +54,9 @@
         background-color: #f9fafb;
         border-bottom: 1px solid #e5e7eb;
         font-family: 'S-CoreDream-3Light';
-        }
+      }
  
-      .navbar-left {
+      .navbar-logo {
       display: flex;
       align-items: center;
       gap: 0.5rem;
@@ -86,6 +95,22 @@
 }
 
 .nav-link:hover {
+  color: #4f46e5;
+}
+
+.navbar-icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.icon-link {
+  font-size: 1.5rem;
+  color: #374151;
+  transition: color 0.2s;
+}
+
+.icon-link:hover {
   color: #4f46e5;
 }
   </style>
