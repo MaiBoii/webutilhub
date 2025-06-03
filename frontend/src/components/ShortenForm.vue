@@ -14,6 +14,19 @@
         </p>
       </form>
     </div>
+
+    <!-- 모달 -->
+    <div v-if="showModal" class="modal-overlay" @click.self="closeModal">
+      <div class="modal-content">
+        <h2>단축 URL 생성 완료!</h2>
+        <p>
+          ✅ 단축 URL: 
+          <a :href="shortUrl" target="_blank" rel="noopener">{{ shortUrl }}</a>
+        </p>
+        <button @click="closeModal">닫기</button>
+      </div>
+    </div>
+
   </main>
   </template>
   
@@ -23,6 +36,8 @@
   
   const originalUrl = ref('')
   const shortUrl = ref('')
+  const showModal = ref(false)
+
   
   const shorten = async () => {
     try {
@@ -98,6 +113,39 @@ input {
 
 .form-row button:hover {
   background-color: #4338ca; /* hover 시 더 진한 파랑 */
+}
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex; justify-content: center; align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 1.5rem 2rem;
+  border-radius: 8px;
+  max-width: 90%;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+.modal-content a {
+  color: #007acc;
+  word-break: break-all;
+}
+
+.modal-content button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: #007acc;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
   </style>
