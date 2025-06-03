@@ -1,8 +1,7 @@
 <template>
     <nav class="navbar">
       <div class="navbar-logo">
-        <!-- <img src="/logo.svg" alt="로고" class="logo" />
-        <span class="site-name">공구함</span> -->
+        <span class="site-name">공구함</span>
       </div>
       <div class="navbar-links">
         <RouterLink to="/" class="nav-link"> URL 단축</RouterLink>
@@ -30,7 +29,6 @@
   </script>
   
   <style scoped>
-
     @font-face {
         font-family: 'JalnanGothic';
         src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/JalnanGothic.woff') format('woff');
@@ -56,16 +54,11 @@
         font-family: 'S-CoreDream-3Light';
       }
  
-      .navbar-logo {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      }
-
-.logo {
-  height: 32px;
-  width: 32px;
-}
+  .navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
 
 .nav-link.router-link-active {
   color: #4f46e5;
@@ -73,8 +66,7 @@
 
 .site-name {
   font-weight: bold;
-  font-size: 28px; 
-  line-height: 30px;
+  font-size: 24px; 
   color: black;
   font-family: 'JalnanGothic';
 }

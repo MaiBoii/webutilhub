@@ -1,3 +1,4 @@
+
 <template>
   <main>
     <h1>QR 코드 생성기</h1>
@@ -20,27 +21,25 @@
   <form>
     
   </form>
-
-      <!-- 입력 폼 부분 -->
       <div class="inputs">
         <template v-if="type === 'text' || type === 'link'">
-          <input v-model="text" :placeholder="type === 'text' ? '텍스트 입력' : 'URL 입력'" />
+          <FloatingInput v-model="text" :label="type === 'text' ? '텍스트 입력' : 'URL 입력'" />
         </template>
 
         <template v-else-if="type === 'wifi'">
-          <input v-model="ssid" placeholder="SSID 입력" />
-          <input v-model="password" placeholder="비밀번호 입력" />
+          <FloatingInput v-model="ssid" label="SSID 입력" />
+          <FloatingInput v-model="password" label="비밀번호 입력" />
         </template>
 
         <template v-else-if="type === 'sms'">
-          <input v-model="phone" placeholder="전화번호 입력" />
-          <input v-model="smsMessage" placeholder="메시지 입력" />
+          <FloatingInput v-model="phone" label="전화번호 입력" />
+          <FloatingInput v-model="smsMessage" label="메시지 입력" />
         </template>
 
         <template v-else-if="type === 'email'">
-          <input v-model="email" placeholder="이메일 주소 입력" />
-          <input v-model="emailSubject" placeholder="제목 입력" />
-          <input v-model="emailBody" placeholder="내용 입력" />
+          <FloatingInput v-model="email" label="이메일 주소 입력" />
+          <FloatingInput v-model="emailSubject" label="제목 입력" />
+          <FloatingInput v-model="emailBody" label="내용 입력" />
         </template>
 
         <template v-else-if="type === 'x-twitter'">
@@ -51,7 +50,6 @@
       </div>
     </div>
 
-      <!-- 오른쪽 QR 코드 + 버튼 -->
       <div class="qrcode-section">
         <div class="qrcode-container" ref="dashboardRef">
           <qrcode-vue :value="finalText || ''" :size="200" />
@@ -68,6 +66,8 @@
 import { ref, computed } from 'vue'
 import QrcodeVue from 'qrcode.vue'
 import html2canvas from 'html2canvas'
+import FloatingInput from './FloatingInput.vue'
+
 
 // 타입 옵션들
 const options = [
@@ -77,12 +77,12 @@ const options = [
   { value: 'sms', label: 'SMS', icon: 'fas fa-sms' },
   { value: 'email', label: '이메일', icon: 'fas fa-envelope' },
   { value: 'x', label: 'Twitter', icon: 'fa-brands fa-x-twitter' },
-
 ]
 
 // 상태 관리
 const type = ref('text')
 const text = ref('')
+const link = ref('')
 const ssid = ref('')
 const password = ref('')
 const phone = ref('')
@@ -90,6 +90,8 @@ const smsMessage = ref('')
 const email = ref('')
 const emailSubject = ref('')
 const emailBody = ref('')
+const twitterUsername = ref('')
+const tweetId = ref('')
 
 const dashboardRef = ref<HTMLElement | null>(null)
 
@@ -98,7 +100,7 @@ const finalText = computed<string>(() => {
     case 'text':
       return text.value
     case 'link':
-      return text.value
+      return link.value
     case 'wifi':
       return ssid.value && password.value ? `WIFI:T:WPA;S:${ssid.value};P:${password.value};;` : ''
     case 'sms':
@@ -107,6 +109,12 @@ const finalText = computed<string>(() => {
       return email.value && emailSubject.value && emailBody.value
         ? `mailto:${email.value}?subject=${encodeURIComponent(emailSubject.value)}&body=${encodeURIComponent(emailBody.value)}`
         : ''
+    case 'x':
+      return twitterUsername.value && tweetId.value
+        ? `https://twitter.com/${twitterUsername.value}/status/${tweetId.value}`
+        : twitterUsername.value
+          ? `https://twitter.com/${twitterUsername.value}`
+          : ''
     default:
       return ''
   }
@@ -143,12 +151,16 @@ input 				{
   font-size:18px;
   padding:10px 10px 10px 5px;
   display:block;
-  width:300px;
+  width:500px;
   border:none;
+  margin: 16px; /* 간격 조절 */
+  margin-bottom: 30px; /* 간격 조절 */
   border-bottom:1px solid #757575;
 }
 
-input:focus 		{ outline:none; }
+input:focus 		{
+   outline:none; 
+}
 
 /* active state */
 input:focus ~ label, input:valid ~ label 		{
@@ -207,24 +219,11 @@ input:focus ~ label, input:valid ~ label 		{
   opacity:0.5;
 }
 
-/* active state */
-input:focus ~ .highlight {
-  -webkit-animation:inputHighlighter 0.3s ease;
-  -moz-animation:inputHighlighter 0.3s ease;
-  animation:inputHighlighter 0.3s ease;
-}
-
 .type-option.active {
   background-color: #4f46e5;
   color: white;
 }
 
-.inputs input {
-  margin-top: 0.5rem;
-  padding: 0.5rem;
-  width: 300px;
-  font-size: 1rem;
-}
 
 button {
   padding: 0.5rem 1rem;
@@ -268,18 +267,5 @@ button {
   position: absolute;
   width: 40px;
   height: 40px;
-}
-
-@-webkit-keyframes inputHighlighter {
-	from { background:#5264AE; }
-  to 	{ width:0; background:transparent; }
-}
-@-moz-keyframes inputHighlighter {
-	from { background:#5264AE; }
-  to 	{ width:0; background:transparent; }
-}
-@keyframes inputHighlighter {
-	from { background:#5264AE; }
-  to 	{ width:0; background:transparent; }
 }
 </style>
