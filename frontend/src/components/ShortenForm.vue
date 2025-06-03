@@ -42,7 +42,7 @@
   const shorten = async () => {
     try {
       const res = await axios.post('http://localhost:3000/api/shorten', {
-        originalUrl,
+        originalUrl: originalUrl.value,
       })
       shortUrl.value = res.data.shortUrl
     } catch (err) {
