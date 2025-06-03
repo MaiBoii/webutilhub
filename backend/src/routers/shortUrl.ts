@@ -1,7 +1,7 @@
 // src/routes/shortUrl.ts
 import express, { Request, Response } from 'express'
 import { nanoid } from 'nanoid'
-import redisClient from '../services/redisService'
+import redisClient from '../services/redisService.js'
 
 const router = express.Router()
 

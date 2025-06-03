@@ -1,8 +1,8 @@
 import express from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
-import urlRoutes from './routers/urlRoutes'
-import redirectRouter from './routers/redirect'
+import urlRoutes from './routers/urlRoutes.js';
+import redirectRouter from './routers/redirect.js';
 import logger from './middlewares/logger'
 //import ipExtractor from './middlewares/ipExtractor'
 
