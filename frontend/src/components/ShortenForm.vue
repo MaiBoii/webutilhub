@@ -15,7 +15,6 @@
       </form>
     </div>
 
-    <!-- 모달 -->
     <div v-if="showModal" class="modal-overlay" @click.self="closeModal">
       <div class="modal-content">
         <h2>단축 URL 생성 완료!</h2>
