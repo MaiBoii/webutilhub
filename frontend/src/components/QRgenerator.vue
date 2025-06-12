@@ -1,54 +1,52 @@
-
 <template>
   <main>
     <h1>QR 코드 생성기</h1>
     <p>목적에 맞는 QR 코드를 쉽게 생성해보세요.</p>
     <div class="flex-container">
-    <div class="form">
-      <div class="type-selector">
-        <div
-          v-for="option in options"
-          :key="option.value"
-          class="type-option"
-          :class="{ active: type === option.value }"
-          @click="type = option.value"
-        >
-          <i :class="option.icon"></i> {{ option.label }}
+      <div class="form">
+        <div class="type-selector">
+          <div
+            v-for="option in options"
+            :key="option.value"
+            class="type-option"
+            :class="{ active: type === option.value }"
+            @click="type = option.value"
+          >
+            <i :class="option.icon"></i> {{ option.label }}
+          </div>
         </div>
+
+        <form class="inputs" @submit.prevent>
+          <template v-if="type === 'text' || type === 'link'">
+            <FloatingInput v-model="text" :label="type === 'text' ? '텍스트 입력' : 'URL 입력'" />
+          </template>
+
+          <template v-else-if="type === 'wifi'">
+            <FloatingInput v-model="ssid" label="SSID 입력" />
+            <FloatingInput v-model="password" label="비밀번호 입력" />
+          </template>
+
+          <template v-else-if="type === 'sms'">
+            <FloatingInput v-model="phone" label="전화번호 입력" />
+            <FloatingInput v-model="smsMessage" label="메시지 입력" />
+          </template>
+
+          <template v-else-if="type === 'email'">
+            <FloatingInput v-model="email" label="이메일 주소 입력" />
+            <FloatingInput v-model="emailSubject" label="제목 입력" />
+            <FloatingInput v-model="emailBody" label="내용 입력" />
+          </template>
+
+          <template v-else-if="type === 'x'">
+            <RadioGroup v-model="twitterMode" :options="twitterOptions" />
+            <FloatingInput v-model="twitterUsername" label="Twitter 사용자 이름 입력" />
+
+            <template v-if="twitterMode === 'tweet'">
+              <FloatingInput v-model="tweetId" label="트윗 ID 입력" />
+            </template>
+          </template>
+        </form>
       </div>
-
-
-  <form>
-    
-  </form>
-      <div class="inputs">
-        <template v-if="type === 'text' || type === 'link'">
-          <FloatingInput v-model="text" :label="type === 'text' ? '텍스트 입력' : 'URL 입력'" />
-        </template>
-
-        <template v-else-if="type === 'wifi'">
-          <FloatingInput v-model="ssid" label="SSID 입력" />
-          <FloatingInput v-model="password" label="비밀번호 입력" />
-        </template>
-
-        <template v-else-if="type === 'sms'">
-          <FloatingInput v-model="phone" label="전화번호 입력" />
-          <FloatingInput v-model="smsMessage" label="메시지 입력" />
-        </template>
-
-        <template v-else-if="type === 'email'">
-          <FloatingInput v-model="email" label="이메일 주소 입력" />
-          <FloatingInput v-model="emailSubject" label="제목 입력" />
-          <FloatingInput v-model="emailBody" label="내용 입력" />
-        </template>
-
-        <template v-else-if="type === 'x-twitter'">
-          <input v-model="email" placeholder="이메일 주소 입력" />
-          <input v-model="emailSubject" placeholder="제목 입력" />
-          <input v-model="emailBody" placeholder="내용 입력" />
-        </template>
-      </div>
-    </div>
 
       <div class="qrcode-section">
         <div class="qrcode-container" ref="dashboardRef">
@@ -62,11 +60,13 @@
   </main>
 </template>
 
+
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import QrcodeVue from 'qrcode.vue'
 import html2canvas from 'html2canvas'
 import FloatingInput from './FloatingInput.vue'
+import RadioGroup from './RadioGroup.vue'
 
 
 // 타입 옵션들
@@ -90,8 +90,13 @@ const smsMessage = ref('')
 const email = ref('')
 const emailSubject = ref('')
 const emailBody = ref('')
+const twitterMode = ref<'profile' | 'tweet'>('profile')
 const twitterUsername = ref('')
 const tweetId = ref('')
+const twitterOptions = [
+  { label: '프로필', value: 'profile' },
+  { label: '트윗', value: 'tweet' },
+]
 
 const dashboardRef = ref<HTMLElement | null>(null)
 
