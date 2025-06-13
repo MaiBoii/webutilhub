@@ -30,13 +30,11 @@ defineProps({
 <style scoped>
 .radio-group {
   display: flex;
-  gap: 1.5rem;
   margin: 25px;
-  margin-bottom: 30px;
-  width: 500px;
-  font-size: 16px;
-  color: #374151;
-  font-family: 'S-CoreDream-3Light', sans-serif;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  max-width: 600px; /* 선택사항 */
 }
 
 .radio-option {

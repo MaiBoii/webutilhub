@@ -3,7 +3,7 @@
     <h1>Base64 암호화/복호화</h1>
     <p>Base64 관련 작업을 할 수 있어요.</p>
 
-    <div class="mode-switch">
+    <!-- <div class="mode-switch">
       <label :class="['radio-btn', { active: mode === 'decode' }]">
         <input type="radio" value="decode" v-model="mode" hidden />
         <i class="fa-solid fa-unlock"></i>
@@ -14,6 +14,10 @@
         <i class="fa-solid fa-lock"></i>
         Encoding
       </label>
+    </div> -->
+
+    <div class="center">
+      <RadioGroup v-model="mode" :options="options" />
     </div>
 
     <textarea v-model="input" placeholder="여기에 텍스트 입력" rows="6" />
@@ -27,10 +31,15 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import RadioGroup from '../components/RadioGroup.vue'
 
 const input = ref('')
 const output = ref('')
 const mode = ref<'encode' | 'decode'>('encode') // 초기값을 인코딩 모드로 설정
+const options = [
+  { label: 'Encoding', value: 'encode', icon: 'fa-solid fa-lock' },
+  { label: 'Decoding', value: 'decode', icon: 'fa-solid fa-unlock' },
+]
 
 const setMode = (newMode: 'encode' | 'decode') => {
   mode.value = newMode
@@ -52,47 +61,11 @@ const processInput = () => {
 
 <style scoped>
 
-.radio-btn {
-  position: relative;
+
+.center {
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  max-width: 200px;
-  height: 40px;
-  margin: 1rem;
-  padding: 0 1rem;
-  text-transform: uppercase;
-  border: 1px solid #66ccff;
-  color: #66ccff;
-  cursor: pointer;
-  line-height: 40px;
-  user-select: none;
-  transition: background-color 0.3s ease;
-  border-radius: 6px;
-}
-
-.radio-btn input[type="radio"] {
-  display: none;
-}
-
-.radio-btn .checkmark {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  border: 2px solid #66ccff;
-  display: inline-block;
-  position: relative;
-}
-
-.radio-btn.active .checkmark {
-  background-color: #4f46e5;
-  border-color: #4f46e5;
-}
-
-.radio-btn.active {
-  background-color: #e0e7ff;
-  color: #4f46e5;
-  border-color: #4f46e5;
+  justify-content: center;
+  margin-bottom: 1rem;
 }
 
 textarea {
