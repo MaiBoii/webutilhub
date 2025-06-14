@@ -8,7 +8,10 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+
+    "moduleResolution": "node" //moduleResolution: "node"는 node_modules 내 타입 선언을 찾을 때 node 스타일로 탐색하는 방식임, 앵간해선 이게 제일 안정적.
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"]
 }

@@ -3,11 +3,14 @@
     <h1>Base64 암호화/복호화</h1>
     <p>Base64 관련 작업을 할 수 있어요.</p>
 
-    <!-- ⬇️ 새로 바뀐 부분 -->
     <UnderlineHover v-model="mode" :options="options" />
 
     <textarea v-model="input" placeholder="여기에 텍스트 입력" rows="6" />
-    <a @click="processInput" class="btn-1" href="#">{{ mode === 'encode' ? '> Encode <' : '> Decode <' }}</a>
+    <div class="button-wrapper">
+      <a @click="processInput" class="btn" href="#">
+        {{ mode === 'encode' ? '> Encode <' : '> Decode <' }}
+      </a>
+    </div>
 
     <div class="output">
       <textarea readonly :value="output" placeholder="여기에 결과물 출력" rows="6" />
@@ -16,22 +19,23 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import UnderlineHover from './UnderlineHover.vue'
 
 const input = ref('')
 const output = ref('')
 const mode = ref<'encode' | 'decode'>('encode') // 초기값을 인코딩 모드로 설정
 
+// 모드가 바뀌면 input/output 초기화
+watch(mode, () => {
+  input.value = ''
+  output.value = ''
+})
+
 const options = [
   { label: 'Encoding', value: 'encode', icon: 'fa-solid fa-lock' },
   { label: 'Decoding', value: 'decode', icon: 'fa-solid fa-unlock' },
 ]
-
-const setMode = (newMode: 'encode' | 'decode') => {
-  mode.value = newMode
-  output.value = '' // 모드 변경 시 출력 초기화
-}
 
 const processInput = () => {
   try {
@@ -48,13 +52,10 @@ const processInput = () => {
 
 <style scoped>
 
+/* 전체 레이아웃용 – 필요한 최소만 남김 */
+main { text-align: center; }
 
-.center {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1rem;
-}
-
+/* 입력·출력 박스 */
 textarea {
   width: 80%;
   max-width: 600px;
@@ -62,114 +63,45 @@ textarea {
   padding: 0.75rem;
   font-size: 1rem;
   font-family: monospace;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  resize: none;
+  box-sizing: border-box;
 }
 
+/* 인코딩/디코딩 토글 */
 .mode-switch {
   display: flex;
   justify-content: center;
-  gap: 0.25 rem;
+  gap: 0.5rem;
   margin-bottom: 1rem;
 }
+.mode-switch label { cursor: pointer; }
 
-.mode-switch label {
-  cursor: pointer;
-}
+/* 결과 영역 간격 */
+.output { margin-top: 2rem; }
 
-.mode-switch button {
-  padding: 0.5rem 1rem;
-  font-weight: bold;
-  background-color: #f3f4f6;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.button-group {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin: 1rem 0;
-}
-
-textarea {
-  width: 100%;
-  height: 150px;
-  padding: 12px 20px;
-  box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  background-color: #f8f8f8;
-  font-size: 16px;
-  resize: none;
-}
-
-button {
-  margin: 10px;
-}
-
-.btn-1 {
-  color: #4f46e5; /* 밝은 색 예시 */
-  position: relative;
-  display: block;
-  overflow: hidden;
-  max-width: 150px;
-  height: 40px;
-  margin: 1rem auto;
-  text-transform: uppercase;
-  border: 1px solid currentColor;
-}
-
-.btn-1:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: -50px;
-  bottom: 0;
-  left: 0;
-  border-right: 50px solid transparent;
-  border-bottom: 80px solid #3399cc; /* 어두운 색 예시 */
-  transform: translateX(-100%);
-  z-index: -1;
-  transition: 0.5s ease-in-out;
-}
-
-.btn-1:hover {
-  color: #99ddff; /* hover 시 더 밝은 색 */
-}
-
-.btn-1:hover:before {
-  transform: translateX(0);
-}
-
-.frame {
-  width: 90%;
-  margin: 40px auto;
+/* style scoped에 추가 */
+.button-wrapper {
   text-align: center;
+  margin-top: 1rem;
 }
 
-.custom-btn {
-  width: 130px;
-  height: 40px;
-  color: #fff;
-  border-radius: 5px;
-  padding: 10px 25px;
-  font-family: 'Lato', sans-serif;
-  font-weight: 500;
-  background: transparent;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
+/* ======== 버튼 (.btn-3) ======== */
+.btn {
   display: inline-block;
-  outline: none;
-}
-
-.output {
-  margin-top: 2rem;
-}
-
-a {
+  padding: 0.75rem 1.5rem;
+  border: 1px solid #4f46e5;
+  background: transparent;
+  color: #4f46e5;
+  text-transform: uppercase;
   text-decoration: none;
-  line-height: 40px;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease;
 }
 
+.btn:hover {
+  background: #4f46e5;
+  color: #fff;
+}
 </style>

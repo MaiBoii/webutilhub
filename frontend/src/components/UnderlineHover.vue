@@ -59,7 +59,7 @@ ul {
   margin: 20px 25px;
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 li {
@@ -80,7 +80,7 @@ li {
 
 .link {
   --hover-color: var(--underline-color, #4f46e5);
-  color: var(--hover-color);
+  color: #000; /* 기본 텍스트 색상을 검은색으로 설정 */
   background: transparent;
   border: none;
   font: inherit;
@@ -93,6 +93,13 @@ li {
   align-items: center;
   gap: 0.35em;
   transition: filter 0.2s ease;
+}
+
+.link:hover,
+.link:focus-visible,
+.link.active {
+  color: var(--hover-color); /* 호버나 선택 시 색상 전환 */
+  filter: brightness(1.2);
 }
 
 .link:hover,

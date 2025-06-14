@@ -7,8 +7,8 @@
         <RouterLink to="/" class="nav-link"> URL 단축</RouterLink>
         <RouterLink to="/qr" class="nav-link"> QR 생성기</RouterLink>
         <RouterLink to="/base64" class="nav-link"> Base64</RouterLink>
-        <RouterLink to="/webhook" class="nav-link"> WebHook</RouterLink>
-        <RouterLink to="/images" class="nav-link"> 이미지 편집</RouterLink>
+        <RouterLink to="/uuid" class="nav-link"> UUID 생성기</RouterLink>
+        <RouterLink to="/lorem" class="nav-link"> Lorem Ipsum </RouterLink>
         <RouterLink to="/stats" class="nav-link"> 통계</RouterLink>
         
       </div>
@@ -105,5 +105,6 @@
 .icon-link:hover {
   color: #4f46e5;
 }
+
   </style>
   
