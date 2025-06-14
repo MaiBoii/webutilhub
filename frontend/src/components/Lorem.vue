@@ -65,7 +65,6 @@ const sentencesPool = [
   "In at libero sed nunc venenatis imperdiet sed ornare turpis."
 ]
 
-// 한 문장의 단어 수를 계산해서, 요청된 단어 수만큼 문장 조합해서 문단 생성
 function generateParagraph(wordsCount: number): string {
   const paragraphSentences: string[] = []
   let wordAccumulator = 0
@@ -79,7 +78,6 @@ function generateParagraph(wordsCount: number): string {
     const sentence = pickRandomSentence()
     const wordNum = sentence.split(' ').length
 
-    // 누적 단어 수가 넘으면 마지막 문장만 잘라서 단어수 맞춤
     if (wordAccumulator + wordNum > wordsCount) {
       const wordsNeeded = wordsCount - wordAccumulator
       const truncated = sentence.split(' ').slice(0, wordsNeeded).join(' ')
@@ -107,7 +105,6 @@ function copyText(text: string) {
   try {
     navigator.clipboard.writeText(text);
     toast.success('클립보드에 복사되었습니다!', { timeout: 2000 })
-    console.log("복사가되었는디??")
   } catch {
     toast.error('복사에 실패했습니다.')
   }

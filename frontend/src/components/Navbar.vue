@@ -9,7 +9,8 @@
         <RouterLink to="/base64" class="nav-link"> Base64</RouterLink>
         <RouterLink to="/uuid" class="nav-link"> UUID 생성기</RouterLink>
         <RouterLink to="/Lorem" class="nav-link"> Lorem Ipsum </RouterLink>
-        <RouterLink to="/stats" class="nav-link"> 통계</RouterLink>
+        <RouterLink to="/IpChecker" class="nav-link"> 내 IP 조회 </RouterLink>
+
         
       </div>
 
