@@ -3,22 +3,8 @@
     <h1>Base64 암호화/복호화</h1>
     <p>Base64 관련 작업을 할 수 있어요.</p>
 
-    <!-- <div class="mode-switch">
-      <label :class="['radio-btn', { active: mode === 'decode' }]">
-        <input type="radio" value="decode" v-model="mode" hidden />
-        <i class="fa-solid fa-unlock"></i>
-        Decoding
-      </label>
-      <label :class="['radio-btn', { active: mode === 'encode' }]">
-        <input type="radio" value="encode" v-model="mode" hidden />
-        <i class="fa-solid fa-lock"></i>
-        Encoding
-      </label>
-    </div> -->
-
-    <div class="center">
-      <RadioGroup v-model="mode" :options="options" />
-    </div>
+    <!-- ⬇️ 새로 바뀐 부분 -->
+    <UnderlineHover v-model="mode" :options="options" />
 
     <textarea v-model="input" placeholder="여기에 텍스트 입력" rows="6" />
     <a @click="processInput" class="btn-1" href="#">{{ mode === 'encode' ? '> Encode <' : '> Decode <' }}</a>
@@ -31,11 +17,12 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import RadioGroup from '../components/RadioGroup.vue'
+import UnderlineHover from './UnderlineHover.vue'
 
 const input = ref('')
 const output = ref('')
 const mode = ref<'encode' | 'decode'>('encode') // 초기값을 인코딩 모드로 설정
+
 const options = [
   { label: 'Encoding', value: 'encode', icon: 'fa-solid fa-lock' },
   { label: 'Decoding', value: 'decode', icon: 'fa-solid fa-unlock' },
@@ -121,7 +108,7 @@ button {
 }
 
 .btn-1 {
-  color: #66ccff; /* 밝은 색 예시 */
+  color: #4f46e5; /* 밝은 색 예시 */
   position: relative;
   display: block;
   overflow: hidden;
