@@ -24,7 +24,7 @@ import UnderlineHover from './UnderlineHover.vue'
 
 const input = ref('')
 const output = ref('')
-const mode = ref<'encode' | 'decode'>('encode') // 초기값을 인코딩 모드로 설정
+const mode = ref<'encode' | 'decode'>('encode')
 
 watch(mode, () => {
   input.value = ''
@@ -51,10 +51,8 @@ const processInput = () => {
 
 <style scoped>
 
-/* 전체 레이아웃용 – 필요한 최소만 남김 */
 main { text-align: center; }
 
-/* 입력·출력 박스 */
 textarea {
   width: 80%;
   max-width: 600px;
@@ -62,10 +60,17 @@ textarea {
   padding: 0.75rem;
   font-size: 1rem;
   font-family: monospace;
-  border: 2px solid #ccc;
+  border: 2px solid var(--border);        /* NEW */
   border-radius: 4px;
   resize: none;
   box-sizing: border-box;
+  background: var(--secondary-bg);        /* NEW */
+  color: var(--text);                     /* NEW */
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--primary);
 }
 
 /* 인코딩/디코딩 토글 */
@@ -86,21 +91,21 @@ textarea {
   margin-top: 1rem;
 }
 
-/* ======== 버튼 (.btn-3) ======== */
 .btn {
   display: inline-block;
   padding: 0.75rem 1.5rem;
-  border: 1px solid #4f46e5;
+  border: 1px solid var(--primary);
   background: transparent;
-  color: #4f46e5;
+  color: var(--primary);
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
   transition: background 0.25s ease, color 0.25s ease;
 }
 
+
 .btn:hover {
-  background: #4f46e5;
-  color: #fff;
+  background: var(--primary);
+  color: var(--primary-text);
 }
 </style>

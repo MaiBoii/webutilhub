@@ -1,8 +1,10 @@
 <template>
   <div class="app-wrapper" :class="{ dark: isDark }">
-    <Navbar /> 
+    <Navbar :is-dark="isDark" /> 
     <main class="main-content">
-      <RouterView />
+      <RouterView v-slot="{ Component }">
+        <component :is="Component" :is-dark="isDark" />
+      </RouterView>
     </main>
   <Footer :is-dark="isDark" />
         <button class="dark-toggle" @click="toggleDarkMode">
@@ -12,11 +14,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted,provide } from 'vue'
 import Navbar from './components/Navbar.vue'
 import Footer from './components/Footer.vue'
 
 const isDark = ref(false)
+provide('isDark', isDark)
 
 onMounted(() => {
   const saved = localStorage.getItem('theme')

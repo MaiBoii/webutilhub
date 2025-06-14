@@ -1,9 +1,10 @@
 <template>
     <h1>Lorem Ipsum 생성기</h1>
-    <p>문장 수, 단어 수, 문장 길이 등을 조절할 수 있어 <br>원하는 텍스트 스타일을 자유롭게 설정할 수 있어요.</p>
+    <p>문장 수, 단어 수, 문장 길이 등을 조절할 수 있습니다! <br>원하는 텍스트 스타일을 자유롭게 설정할 수 있어요.</p>
 
   <section class="lorem-ipsum">
     <div class="controls">
+      <div class="paragraph-con">
       <label for="paragraphCount">단락 수:</label>
       <input
         id="paragraphCount"
@@ -21,8 +22,9 @@
         max="300"
         v-model.number="wordsPerParagraph"
       />
+    </div>
 
-      <button @click="generateLorem">생성</button>
+    <button class="generate-btn" @click="generateLorem">생 성</button>
     </div>
 
     <div class="output" v-if="generatedText.length">
@@ -36,8 +38,6 @@
         <p>{{ para }}</p>
         </div>
     </div>
-
-    <p v-if="copySuccess" class="copy-success">Copied to clipboard! ✅</p>
   </section>
 </template>
 
@@ -146,25 +146,35 @@ button {
   cursor: pointer;
   padding: 0.4rem 0.8rem;
   border-radius: 4px;
-  border: 1px solid #007bff;
-  background: #007bff;
+  background: #4f46e5;
   color: white;
   font-weight: 600;
   transition: background-color 0.3s;
 }
 
-button:disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
-  background: #a0c5ff;
-}
-
-button:not(:disabled):hover {
-  background-color: #0056b3;
-}
-
 .output {
   margin-top: 1rem;
+}
+.paragraph-con {
+  display: flex;
+  margin: 12px auto; 
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+
+.paragraph-con label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+}
+
+.paragraph-con input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  width: 100px;
+  margin: 0.25rem;
 }
 
 .paragraph {
@@ -181,9 +191,28 @@ button:not(:disabled):hover {
   background-color: #f0f0f0;
 }
 
-.copy-success {
-  color: green;
-  margin-top: 0.5rem;
-  font-weight: 700;
+.dark .paragraph {
+  background-color: #2c2c38; 
+  color: #f0f0f0;       
+}
+
+.dark .paragraph:hover {
+  background-color: #3a3a4a; 
+}
+
+.generate-btn {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.generate-btn:hover {
+  background-color: #4338ca;
 }
 </style>

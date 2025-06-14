@@ -1,5 +1,12 @@
 :root {
   font-family: 'Noto Sans', sans-serif;
+    --bg:           #ffffff;
+    --text:         #000000;
+    --border:       #cccccc;
+    --secondary-bg: #f9f9f9;
+    --secondary-bg-hover: #f0f0f0;
+    --primary:      #4f46e5;
+    --primary-text: #ffffff;
 }
 
 h1 {
@@ -9,4 +16,15 @@ h1 {
 
 main {
   text-align: center;
+}
+
+.dark {
+  /* Dark theme */
+  --bg:           #1e1e2f;
+  --text:         #f0f0f0;
+  --border:       #444c63;
+  --secondary-bg: #2c2c38;
+  --secondary-bg-hover: #3a3a4a;
+  --primary:      #6d6bff;   /* 살짝 더 밝은 보라 */
+  --primary-text: #101010;
 }

@@ -53,7 +53,7 @@ function copyText(text: string) {
   max-width: 700px;
   font-family: sans-serif;
   padding: 12px;
-  margin: 12px auto;   /* 왼쪽·오른쪽 auto → 가로 중앙 정렬 */
+  margin: 12px auto; 
   border-radius: 6px;
   background-color: #f9f9f9;
   cursor: pointer;
@@ -63,5 +63,14 @@ function copyText(text: string) {
 
 .container:hover {
   background-color: #f0f0f0;
+}
+
+.dark .container {
+  background-color: #2c2c38; 
+  color: #f0f0f0;       
+}
+
+.dark .container:hover {
+  background-color: #3a3a4a; 
 }
 </style>

@@ -4,7 +4,6 @@
         <span class="site-name">공구함</span>
       </div>
       <div class="navbar-links">
-        <!-- <RouterLink to="/" class="nav-link"> URL 단축</RouterLink> -->
         <RouterLink to="/qr" class="nav-link"> QR 생성기</RouterLink>
         <RouterLink to="/base64" class="nav-link"> Base64</RouterLink>
         <RouterLink to="/uuid" class="nav-link"> UUID 생성기</RouterLink>
@@ -107,7 +106,7 @@
   color: #4f46e5;
 }
 
-.dark .navbar {    /* ← 표기만 바꿈 */
+.dark .navbar {  
   background-color: #1f2937;
   border-bottom: 1px solid #374151;
 }

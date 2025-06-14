@@ -1,5 +1,5 @@
 <template>
-  <nav class="underline-hover" :style="{ '--underline-color': color }">
+  <nav class="underline-hover" :style="{ '--underline-color': color }" :class="{ dark: isDark }">
     <ul>
       <li v-for="opt in options" :key="opt.value">
         <input
@@ -24,6 +24,9 @@
 </template>
 
 <script setup lang="ts">
+import { inject, type Ref } from 'vue'
+const isDark = inject('isDark') as Ref<boolean>
+
 interface Option {
   label: string
   value: string
@@ -31,18 +34,10 @@ interface Option {
 }
 
 const props = defineProps<{
-  /**
-   * Currently selected value (use with v-model)
-   */
   modelValue: string
-  /**
-   * Array of option objects (label/value[/icon])
-   */
   options: Option[]
-  /**
-   * Optional custom underline & text color (defaults to #fff)
-   */
   color?: string
+  isDark?: boolean
 }>()
 
 const emit = defineEmits<{
@@ -51,7 +46,6 @@ const emit = defineEmits<{
 </script>
 
 <style scoped>
-/************  Layout  ************/
 ul {
   margin: 0 auto;
   padding: 0;
@@ -78,9 +72,10 @@ li {
   width: 1px;
 }
 
+
 .link {
   --hover-color: var(--underline-color, #4f46e5);
-  color: #000; /* 기본 텍스트 색상을 검은색으로 설정 */
+  color: var(--text-color, #000); /* 기본값 설정 */
   background: transparent;
   border: none;
   font: inherit;
@@ -125,7 +120,10 @@ li {
   left: 0;
 }
 
-/************  Responsive  ************/
+nav.dark .link {
+  --text-color: #fff;
+}
+
 @media (max-width: 600px) {
   ul {
     flex-wrap: wrap;

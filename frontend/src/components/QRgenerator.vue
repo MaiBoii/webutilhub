@@ -160,7 +160,9 @@ input 				{
   border:none;
   margin: 16px; /* 간격 조절 */
   margin-bottom: 30px; /* 간격 조절 */
-  border-bottom:1px solid #757575;
+  border-bottom: 1px solid var(--clr-border);
+  background: transparent;
+  color: inherit;
 }
 
 input:focus 		{
@@ -203,16 +205,24 @@ input:focus ~ label, input:valid ~ label 		{
 
 .type-option {
   padding: 0.5rem 1rem;
-  border: 1px solid #ccc;
+  border: 1px solid var(--clr-option-bd);
   border-radius: 10px;
   cursor: pointer;
-  background-color: #f9f9f9;
+  background-color: var(--clr-surface);
   display: flex;
   align-items: center;
   gap: 0.5rem;
   transition: 0.2s;
 }
 
+.type-option:hover {
+  background-color: var(--clr-surface-hover);
+}
+
+.type-option.active {
+  background-color: var(--clr-primary);
+  color: var(--clr-on-primary);
+}
 
 .highlight {
   position:absolute;
