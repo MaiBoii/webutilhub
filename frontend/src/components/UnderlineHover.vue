@@ -33,14 +33,14 @@ interface Option {
   icon?: string
 }
 
-const props = defineProps<{
+defineProps<{
   modelValue: string
   options: Option[]
   color?: string
   isDark?: boolean
 }>()
 
-const emit = defineEmits<{
+defineEmits<{
   (e: 'update:modelValue', value: string): void
 }>()
 </script>

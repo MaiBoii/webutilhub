@@ -19,7 +19,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory('/webutilhub'),  // ← 여기 베이스 경로 추가 (중요!)
   routes
 })
 

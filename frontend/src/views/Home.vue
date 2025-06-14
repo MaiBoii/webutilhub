@@ -1,8 +1,8 @@
 <template>
-    <ShortenForm />
+    <QRgenerator />
   </template>
   
   <script setup>
-  import ShortenForm from '../components/ShortenForm.vue'
+  import QRgenerator from '../components/QRgenerator.vue'
   </script>
   
