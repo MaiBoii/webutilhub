@@ -1,6 +1,6 @@
 <template>
     <h1>Lorem Ipsum 생성기</h1>
-    <p>문장 수, 단어 수, 문장 길이 등을 조절할 수 있어 <br>원하는 텍스트 스타일을 자유롭게 설정할 수 있습니다.</p>
+    <p>문장 수, 단어 수, 문장 길이 등을 조절할 수 있어 <br>원하는 텍스트 스타일을 자유롭게 설정할 수 있어요.</p>
 
   <section class="lorem-ipsum">
     <div class="controls">

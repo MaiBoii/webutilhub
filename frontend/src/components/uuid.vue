@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col items-center gap-4 max-w-md mx-auto p-4">
     <h1>UUID 생성기</h1>
-    <p>RFC4122 알고리즘을 사용해 UUID를 생성합니다.</p>
+    <p>RFC4122 알고리즘을 사용해 UUID를 생성할 수 있어요.</p>
 
     <UnderlineHover v-model="version" :options="options" />
 

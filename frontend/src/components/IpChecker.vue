@@ -1,7 +1,6 @@
-<!-- IpGeoChecker.vue -->
 <template>
     <h1>내 IP 조회하기</h1>
-    <p>현재 접속한 기기의 외부 IP 주소입니다.<br>
+    <p>현재 접속한 기기의 외부 IP 주소입니다!<br>
     클릭 시 클립보드에 IP가 복사됩니다.</p>
   <div class="container">
     <div v-if="ipInfo"    
@@ -10,7 +9,7 @@
       <h2>{{ ipInfo.ip }}</h2>
       <p>{{ ipInfo.city }}, {{ ipInfo.region }}, {{ ipInfo.country_name }}</p>
     </div>
-    <p v-else>불러오는 중...</p>
+    <p v-else>   </p>
   </div>
 </template>
 
