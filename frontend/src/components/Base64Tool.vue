@@ -26,15 +26,14 @@ const input = ref('')
 const output = ref('')
 const mode = ref<'encode' | 'decode'>('encode') // 초기값을 인코딩 모드로 설정
 
-// 모드가 바뀌면 input/output 초기화
 watch(mode, () => {
   input.value = ''
   output.value = ''
 })
 
 const options = [
-  { label: 'Encoding', value: 'encode', icon: 'fa-solid fa-lock' },
-  { label: 'Decoding', value: 'decode', icon: 'fa-solid fa-unlock' },
+  { label: '암호화', value: 'encode', icon: 'fa-solid fa-lock' },
+  { label: '복호화', value: 'decode', icon: 'fa-solid fa-unlock' },
 ]
 
 const processInput = () => {
