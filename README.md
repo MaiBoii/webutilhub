@@ -2,7 +2,7 @@
 
 ## 소개
 이 프로젝트는 웹 개발자 및 일반 사용자에게 유용한 웹 툴킷 모음입니다.  
-간편한 URL 단축, QR 코드 생성, Base64 인코딩/디코딩, UUID 생성, Lorem Ipsum 텍스트 생성 기능을 제공합니다.
+간편한 QR 코드 생성, Base64 인코딩/디코딩, UUID 생성, Lorem Ipsum 텍스트 생성 기능을 제공합니다.
 
 ---
 
@@ -33,12 +33,3 @@
   - TypeScript  
   - Vite (개발 서버 및 빌드 툴)  
 
-
----
-
-## 프로젝트 실행 방법
-
-```bash
-npm install
-npm run dev
-```
