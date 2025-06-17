@@ -41,6 +41,8 @@ function toggleDarkMode() {
 <style scoped>
 :global(html, body) {
   margin: 0;
+  width: 100%;
+  height: 100%;
   font-family: system-ui, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
   -webkit-font-smoothing: antialiased;
 }
