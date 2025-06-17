@@ -215,4 +215,24 @@ button {
 .generate-btn:hover {
   background-color: #4338ca;
 }
+
+/* 📱 모바일: 1줄씩 세로로 배치 */
+@media (max-width: 768px) {
+  .paragraph-con {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .paragraph-con label {
+    text-align: left;
+    margin-bottom: 0.25rem;
+  }
+
+  .paragraph-con input {
+    text-align: left;
+    width: 100%;
+    margin-bottom: 0.75rem;
+  }
+}
 </style>

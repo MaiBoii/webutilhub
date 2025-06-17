@@ -64,4 +64,21 @@ defineProps({
   font-size: 14px;
   color: #4f46e5;
 }
+
+/* ───────── 모바일(≤768px) ───────── */
+@media (max-width: 768px) {
+  .input-container {
+  position: relative;
+  margin: 0 auto 30px auto;     /* 위 0, 아래 30px, 좌우 자동: 중앙 정렬 */
+  width: 100%;
+  max-width: 500px;
+  padding: 0 1rem;              /* 양옆 여백 추가 */
+  box-sizing: border-box;       /* 패딩 포함해 width 계산 */
+  }
+  .input-container input {
+    font-size: 16px;          /* 글꼴 1단계 축소 */
+    padding: 12px 8px 8px 4px;
+  }
+  .input-container label { font-size: 16px; }
+}
 </style>

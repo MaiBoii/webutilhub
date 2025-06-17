@@ -152,17 +152,12 @@ label 				 {
   -webkit-transition:0.2s ease all;
 }
 
-input 				{
-  font-size:18px;
-  padding:10px 10px 10px 5px;
-  display:block;
-  width:500px;
-  border:none;
-  margin: 16px; /* 간격 조절 */
-  margin-bottom: 30px; /* 간격 조절 */
-  border-bottom: 1px solid var(--clr-border);
-  background: transparent;
-  color: inherit;
+input {
+  font-size: 16px;
+  padding: 10px 10px 10px 5px;
+  width: 100%;
+  max-width: 500px;
+  box-sizing: border-box;
 }
 
 input:focus 		{
@@ -187,24 +182,89 @@ input:focus ~ label, input:valid ~ label 		{
   padding: 1rem;       /* 양 옆 여백 */
 }
 
+@media (max-width: 768px) {
+  .flex-container {
+    flex-direction: column; /* 세로 정렬 */
+    gap: 1rem;
+  }
+}
+
 .form {
   display: flex;
-  flex: 1;
   flex-direction: column;
-  align-items: center;
+  align-items: center;        /* 기본: 가운데 정렬 */
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin: 0 auto 2rem auto;   /* 가운데 정렬 */
+  width: 100%;
+  max-width: 500px;
+  padding: 0 1rem;
+  box-sizing: border-box;     /* 패딩 포함해서 width 계산 */
+}
+
+@media (max-width: 768px) {
+  .form {
+    flex: none;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto 1.5rem auto;
+    padding: 0 1rem;
+    align-items: stretch;      /* input, selector가 양옆 꽉 차게 */
+    box-sizing: border-box;    /* 반드시 추가 */
+  }
+
+  /* 내부 요소들도 100 % 차지하도록 */
+  .type-selector,
+  .inputs {
+    width: 100%;
+  }
 }
 
 .type-selector {
-  display: flex;
+  /* flex → grid 로 교체 */
+  display: grid;
   gap: 0.5rem;
-  flex-wrap: wrap;
-  justify-content: center;
+  /* 110px 이상이면 1칸, 여유가 생기면 자동으로 2·3… 칸 */
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+
+  /* 컨테이너 폭이 부모 너비를 넘어가지 않도록 */
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.25rem 0.5rem;
+}
+
+/* 모바일(≤768 px)은 3×2 그리드 */
+@media (max-width: 768px) {
+  .type-selector {
+    display: grid;                   /* flex → grid */
+    grid-template-columns: repeat(3, 1fr); /* 3칸 고정 */
+    grid-auto-rows: 1fr;             /* 두 줄까지 자동 생성 */
+    gap: 0.5rem;                     /* 버튼 간격 */
+    width: 100%;
+    max-width: 360px;                /* 선택 (너무 넓어지는 것 방지) */
+    margin: 0 auto;                  /* 가운데 정렬 */
+  }
+
+  /* 버튼이 그리드 셀에 딱 맞도록 */
+  .type-option {
+    justify-content: center;         /* 아이콘·텍스트 정렬 */
+    white-space: nowrap;             /* 두 줄로 안 꺾이게 */
+  }
+}
+
+
+/* 데스크톱(>768 px)은 원래 스타일 유지 */
+@media (min-width: 769px) {
+  .type-selector {
+    display: flex;                   /* 또는 repeat(auto-fill...) */
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
 }
 
 .type-option {
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 0.75rem; 
+  font-size: 0.9rem;         
+  white-space: nowrap;   
   border: 1px solid var(--clr-option-bd);
   border-radius: 10px;
   cursor: pointer;
@@ -241,6 +301,8 @@ input:focus ~ label, input:valid ~ label 		{
 
 
 button {
+  width: 100%;
+  max-width: 200px;
   padding: 0.5rem 1rem;
   font-weight: bold;
   background-color: #4f46e5;
@@ -249,6 +311,7 @@ button {
   border-radius: 5px;
   cursor: pointer;
 }
+
 
 .qrcode-section {
   display: flex;
@@ -276,6 +339,23 @@ button {
   justify-content: center;
   position: relative;
   flex-shrink: 0; /* 줄어들지 않도록 */
+}
+
+@media (max-width: 768px) {
+    /* ① QR 섹션을 가로 가운데 정렬용 flex 컨테이너로 */
+  .qrcode-section {
+    width: 100%;              /* 뷰포트 전체 폭 */
+    display: flex;
+    justify-content: center;  /* ⬅︎ 수평 가운데 */
+    align-items: center;      /* (선택) 수직 가운데 */
+    padding: 1rem 0;          /* 위·아래 살짝 여백 */
+  }
+
+  .qrcode-container {
+    width: 200px;
+    height: 200px;            /* 좌·우 여백 제거 */
+    margin:0;
+  }
 }
 
 .logo {
