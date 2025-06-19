@@ -180,6 +180,8 @@ input:focus ~ label, input:valid ~ label 		{
   width: 100%;
   margin: 0 auto;      /* 가운데 정렬 */
   padding: 1rem;       /* 양 옆 여백 */
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 @media (max-width: 768px) {
