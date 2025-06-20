@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import QrGenerator from '../components/QRgenerator.vue'
 import Base64Tool from '../components/Base64Tool.vue'
@@ -19,7 +19,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory('/webutilhub'),  // ← 여기 베이스 경로 추가 (중요!)
+  history: createWebHashHistory('/webutilhub'), 
   routes
 })
 

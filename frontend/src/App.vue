@@ -47,7 +47,6 @@ function toggleDarkMode() {
   -webkit-font-smoothing: antialiased;
 }
 
-/* 레이아웃 */
 .app-wrapper {
   display: flex;
   flex-direction: column;

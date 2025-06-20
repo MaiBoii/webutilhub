@@ -340,7 +340,7 @@ button {
   align-items: center;
   justify-content: center;
   position: relative;
-  flex-shrink: 0; /* 줄어들지 않도록 */
+  flex-shrink: 0; 
 }
 
 @media (max-width: 768px) {
@@ -349,7 +349,7 @@ button {
     width: 100%;              /* 뷰포트 전체 폭 */
     display: flex;
     justify-content: center;  /* ⬅︎ 수평 가운데 */
-    align-items: center;      /* (선택) 수직 가운데 */
+    align-items: center;   
     padding: 1rem 0;          /* 위·아래 살짝 여백 */
   }
 
